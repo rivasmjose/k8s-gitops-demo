@@ -5,11 +5,13 @@ namespace: prod
 
 namePrefix: prod-
 
-bases:
-  - ../../base
 
-patchesStrategicMerge:
-  - replica-patch.yaml
 
-commonLabels:
-  environment: prod
+resources:
+- ../../base
+labels:
+- includeSelectors: true
+  pairs:
+    environment: prod
+patches:
+- path: replica-patch.yaml

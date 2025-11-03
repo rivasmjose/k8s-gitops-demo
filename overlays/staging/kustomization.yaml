@@ -5,11 +5,13 @@ namespace: staging
 
 namePrefix: staging-
 
-bases:
-  - ../../base
 
-patchesStrategicMerge:
-  - replica-patch.yaml
 
-commonLabels:
-  environment: staging
+resources:
+- ../../base
+labels:
+- includeSelectors: true
+  pairs:
+    environment: staging
+patches:
+- path: replica-patch.yaml

@@ -5,11 +5,13 @@ namespace: dev
 
 namePrefix: dev-
 
-bases:
-  - ../../base
 
-patchesStrategicMerge:
-  - replica-patch.yaml
 
-commonLabels:
-  environment: dev
+resources:
+- ../../base
+labels:
+- includeSelectors: true
+  pairs:
+    environment: dev
+patches:
+- path: replica-patch.yaml
